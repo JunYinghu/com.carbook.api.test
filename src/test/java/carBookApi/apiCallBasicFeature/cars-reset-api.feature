@@ -63,7 +63,8 @@ Feature: to test car reset api call
     And match response == payloadMessage.missing_Auth.response_message
     And print response
 
-  @carsStateResetCallInvalidSignatureKey@smoke
+  @carsStateResetCallInvalidSignatureKey
+  @smoke
   Scenario: Reset call with invalid signature Key, expected Unauthorized error 401
     Given path '/v1/reset'
     And header x-fasd-signature = '9e4051e203a747ba93cfb6268cbb56ec'

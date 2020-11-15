@@ -10,10 +10,9 @@ Feature: to test car book api call
   # Post without / with invalid request data / data format
 
 
-
   Background: declare common variables
     * url carBookBaseUrl
-    * def requestJson = read ('classpath:src/test/resource/carBookData.json')
+    * def requestJson = read ('classpath:src/test/resources/carBookData.json')
 
   @carBookVerifyResponse
   @smoke
@@ -113,11 +112,23 @@ Feature: to test car book api call
     Given path '/v1/book'
     And header Content-Type = 'application/json'
     And header x-fas-signature = '9e4051e203a747ba93cfb6268cbb56ec'
-    And request karate.readAsString('classpath:src/test/resource/carBookData_invalid.json')
+    And request karate.readAsString('classpath:src/test/resources/carBookData_invalid.json')
     When method POST
+    And print response
     Then match responseStatus == payloadMessage.invalid_request_format.response_code
     And match response == payloadMessage.invalid_request_format.response_message
+
+  @carBookCallInvalidRequestContentFormat
+  Scenario: Car book call Invalid Request data type, expected bad request error 400
+    * call read('classpath:reuseFeature/reuse-common-call.feature@reuseResetCall')
+    Given path '/v1/book'
+    And header Content-Type = 'application/json'
+    And header x-fas-signature = '9e4051e203a747ba93cfb6268cbb56ec'
+    And request karate.readAsString('classpath:src/test/resources/uploadImage.png')
+    When method POST
     And print response
+    Then match responseStatus == payloadMessage.invalid_request_format.response_code
+    And match response == payloadMessage.invalid_request_format.response_message
 
   @carBookCallRequestReadTxt
   Scenario: Car book call Request data Type (txt), expected 200
@@ -125,13 +136,14 @@ Feature: to test car book api call
     Given path '/v1/book'
     And header Content-Type = 'application/json'
     And header x-fas-signature = '9e4051e203a747ba93cfb6268cbb56ec'
-    And request karate.readAsString('classpath:src/test/resource/carBookData.txt')
+    And request karate.readAsString('classpath:src/test/resources/carBookData.txt')
     When method POST
     Then match responseStatus == payloadMessage.good_response_car_book_available.response_code
     And match response contains payloadMessage.good_response_car_book_available.response_message
     And print response
 
-  @carBookCallInvalidSignatureKey@smoke
+  @carBookCallInvalidSignatureKey
+  @smoke
   Scenario: Car book call with invalid signature Key, expected Unauthorized error 401
     * call read('classpath:reuseFeature/reuse-common-call.feature@reuseResetCall')
     Given path '/v1/book'
@@ -178,7 +190,7 @@ Feature: to test car book api call
     Given path '/v1/book'
     And header x-fas-signature = '9e4051e203a747ba93cfb6268cbb56ec'
     And header Content-Type = 'application/json'
-    And request karate.readAsString('classpath:src/test/resource/carBookData_batch.json')
+    And request karate.readAsString('classpath:src/test/resources/carBookData_batch.json')
     When method POST
     Then match responseStatus == payloadMessage.missing_field_value.response_code
     And match response == payloadMessage.missing_field_value.response_message

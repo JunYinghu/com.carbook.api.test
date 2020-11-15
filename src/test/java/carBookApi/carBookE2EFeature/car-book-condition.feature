@@ -11,12 +11,12 @@ Feature: to verify e2e car booking with different condition
 
   Background: declare common variables
     * url carBookBaseUrl
-    * def javaMethod = Java.type('com.carsystem.karate.util.UnitTimeCalculator')
+    * def javaMethod = Java.type('com.carbook.util.UnitTimeCalculator')
     * def headerInfo = {x-fas-signature: '9e4051e203a747ba93cfb6268cbb56ec', Content-Type:'application/json'}
     * def bookAllCars = 'classpath:carBookApi/carBookE2EFeature/car-book-basic.feature@carBookVerifyCarIdTotalTime'
     * def reUseCallReset = 'classpath:reuseFeature/reuse-common-call.feature@reuseResetCall'
     * def reUseCallBook = 'classpath:reuseFeature/reuse-common-call.feature@reuseBookCall'
-    * def requestJson = read ('classpath:src/test/resource/carBookData.json')
+    * def requestJson = read ('classpath:src/test/resources/carBookData.json')
 
   @carBookNoCarAvailable
   Scenario: Verify no car available

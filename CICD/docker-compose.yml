@@ -5,11 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: car-book-api-test
+    container_name: com.carbook.api.test
     command: mvn clean test -Dtest=CarBookApiFullTestRunner
-    working_dir: ${APP_PATH:-/car-book-api-test}
+    working_dir: ${APP_PATH:-/com.carbook.api.test}
     volumes:
-      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - ${APP_PATH:-./..}:${APP_PATH:-/com.carbook.api.test}
       - mvn_home:${APP_PATH:-/root/.m2home}
     environment:
       TZ: Asia/Singapore
@@ -21,11 +21,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: car-book-api-test
+    container_name: com.carbook.api.test
     command: mvn clean test -Dtest=CarBookApiSmokeRunner
-    working_dir: ${APP_PATH:-/car-book-api-test}
+    working_dir: ${APP_PATH:-/com.carbook.api.test}
     volumes:
-      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - ${APP_PATH:-./..}:${APP_PATH:-/com.carbook.api.test}
       - mvn_home:${APP_PATH:-/root/.m2home}
     environment:
       TZ: Asia/Singapore
@@ -37,11 +37,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: car-book-api-test
+    container_name: com.carbook.api.test
     command: mvn test test-compile gatling:test
-    working_dir: ${APP_PATH:-/car-book-api-test}
+    working_dir: ${APP_PATH:-/com.carbook.api.test}
     volumes:
-      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - ${APP_PATH:-./..}:${APP_PATH:-/com.carbook.api.test}
       - mvn_home:${APP_PATH:-/root/.m2home}
     environment:
       TZ: Asia/Singapore
@@ -51,8 +51,8 @@ services:
 
 networks:
   backend:
-    name: ${APP_NAME:-car-book-api-test}-${CONTAINER_SUFFIX:-local}
+    name: ${APP_NAME:-com.carbook.api.test}-${CONTAINER_SUFFIX:-local}
 
 volumes:
   mvn_home:
-    name: ${APP_NAME:-car-book-api-test}-maven
+    name: ${APP_NAME:-com.carbook.api.test}-maven

@@ -3,6 +3,16 @@ This repo holds the code for assignment <Car book system> API testing
 It is divided into smoke , e2e testing covering api basic negative and positive as well as performance testing
 All test cases runner has been tested on Window and Linux
 
+## Document
+
+Kindly go to document to read the following documents so that you may more clear on this framework.
+```   
+cd com.carbook.api.test/document
+ - Implementation Anaswer.docx
+ - TestReport.docx
+ - TestCoverage&Defect_HuJunYing.xlsx
+```   
+
 ## Prerequisites
 You will need
  - java 8 and above
@@ -17,13 +27,13 @@ Reference to following libraries / frameworks
   - karate-gatling 0.9.5 (for api performance run)
 
 ## Installation and Pre-Config
-  - Simply clone car-book-api
-  - You may ignore pre-config to use default
+  - Simply clone <https://github.com/JunYinghu/com.carbook.api.test.git>
+  - You may ignore pre-config to use default while running test cases
 
 ### Pre-Config Performance Testing
    - Go to folder and modify application.properties
  ```   
-   cd car-book-api-test/src/main/resources/application.properties 
+   cd com.carbook.api.test/src/main/resources/application.properties 
      
    rampUser=1000
    runDuration=60
@@ -34,7 +44,7 @@ Reference to following libraries / frameworks
 You may config returned payload with response code as per given input, 
 It is very flexible way to re-define response message and code.
 ```
-cd car-book-api-test/src/test/resource/verifiedPayloadAndCode.json
+cd com.carbook.api.test/src/test/resources/verifiedPayloadAndCode.json
 ```
 
 ## Test Case Run
@@ -46,7 +56,7 @@ cd car-book-api-test/src/test/resource/verifiedPayloadAndCode.json
   - generating junit report
   - including smoke test
 ```
-    cd car-book-api-test/CICD   
+    cd com.carbook.api.test/CICD   
     docker-compose run mavensmoke
 ```
 #### Run All Test
@@ -54,14 +64,14 @@ cd car-book-api-test/src/test/resource/verifiedPayloadAndCode.json
    - parallel run
    - including all test 
 ```
-    cd car-book-api-test/CICD   
+    cd com.carbook.api.test/CICD   
     docker-compose run mavenfull   
 ```
 
 #### Performance Run
    - generating gatling report
 ```
-    cd car-book-api-test/CICD   
+    cd com.carbook.api.test/CICD   
     docker-compose run performancerun   
 ```
 
@@ -70,20 +80,20 @@ cd car-book-api-test/src/test/resource/verifiedPayloadAndCode.json
 #### Run Smoke Test
   - generating junit report
 ```
-    cd car-book-api-test
+    cd com.carbook.api.test
     mvn test -Dtest=CarBookApiSmokeRunner
 ```
 #### Run All Test
    - generating cucumber report
 ```
-    cd car-book-api-test
+    cd com.carbook.api.test
     mvn test -Dtest=CarBookApiFullTestRunner
 ```
 
 #### Performance Run
    - generating gatling report
 ```
-    cd car-book-api-test
+    cd com.carbook.api.test
     mvn test-compile gatling:test
 ```
 
@@ -92,16 +102,16 @@ cd car-book-api-test/src/test/resource/verifiedPayloadAndCode.json
  
  ### Junit Report
   ```
-      cd car-book-api-test/target/surefire-reports
+      cd com.carbook.api.test/target/surefire-reports
   ```
  ### Cucumber Report
   ```
-      cd car-book-api-test/target/cucumber-html-reports/overview-features.html
+      cd com.carbook.api.test/target/cucumber-html-reports/overview-features.html
   ```
 
  ### Performance Report
  ```
-     cd car-book-api-test/target/gatling
+     cd com.carbook.api.test/target/gatling
  ```
   
 ## Test Categories / Coverage

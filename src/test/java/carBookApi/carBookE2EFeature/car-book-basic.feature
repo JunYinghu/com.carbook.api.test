@@ -15,11 +15,11 @@ Feature: to test user is able to book a car successfully
     * url 'https://interview.dev.motional.cc/v1/book'
     # pre-condition: call once - all cars are in initial state
     * callonce read('classpath:reuseFeature/reuse-common-call.feature@reuseResetCall')
-    * def javaMethod = Java.type('com.carsystem.karate.util.UnitTimeCalculator')
+    * def javaMethod = Java.type('com.carbook.util.UnitTimeCalculator')
     * def headerInfo = {x-fas-signature: '9e4051e203a747ba93cfb6268cbb56ec', Content-Type:'application/json'}
 
   @carBookVerifyCarIdTotalTime
-    @smoke
+  @smoke
   Scenario Outline: System return correct payload (car_id and total_time) as per given Customer /Destination location
     # all cars are in in initial state
     And  headers headerInfo
