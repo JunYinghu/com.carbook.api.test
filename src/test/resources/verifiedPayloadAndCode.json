@@ -1,0 +1,103 @@
+{
+  "missing_Auth": {
+    "response_message": {
+      "message": "Missing Authentication Token"
+    },
+    "response_code": 401
+  },
+  "invalid_Auth": {
+    "response_message": {
+      "code": "unauthorized",
+      "message": "Unauthorized"
+    },
+    "response_code": 401
+  },
+  "invalid_request_format": {
+    "response_message": {
+      "code": "invalid_json",
+      "message": "Failed to parse json message"
+    },
+    "response_code": 400
+  },
+  "good_response_car_reset": {
+    "response_message": "null",
+    "response_code": 200
+  },
+  "good_response_car_tick": {
+    "response_message": "null",
+    "response_code": 200
+  },
+  "good_response_car_book_no_available": {
+    "response_message": "null",
+    "response_code": 200
+  },
+  "good_response_car_book_available": {
+    "response_message": {
+      "car_id": "#ignore",
+      "total_time": "#ignore"
+    },
+    "response_code": 200
+  },
+  "server_error": {
+    "response_message": {
+      "code": "internal_failure",
+      "message": "Internal Failure"
+    },
+    "response_code": 500
+  },
+  "method_not_allowed": {
+    "response_message": {
+      "code": "METHOD_NOT_ALLOWED",
+      "message": "given method is not allowed"
+    },
+    "response_code": 405
+  },
+
+  "invalid_protocol": {
+    "response_message": "Connection refused: connect"
+  },
+
+  "unsupported_media_type": {
+    "response_message": {
+      "code": "UNSUPPORTED_MEDIA_TYPE",
+      "message": "The data format of the request body is not supported"
+    },
+    "response_code": 415
+  },
+  "missing_content_type": {
+    "response_message": {
+      "code": "Content-Type",
+      "message": "Missing Content-Type"
+    },
+    "response_code": 400
+  },
+  "missing_field_value": {
+    "response_message": {
+      "code": "Missing_FIELD_VALUE",
+      "message": "bad request"
+    },
+    "response_code": 400
+  },
+  "unknown_field_value": {
+    "response_message": {
+      "code": "UNKNOWN_FIELD_VALUE",
+      "message": "bad request"
+    },
+    "response_code": 400
+  },
+  "bad_format": {
+    "response_message": {
+      "code": "BAD_FORMAT",
+      "message": "bad request"
+    },
+    "response_code": 400
+  },
+  "invalid_field_length": {
+    "response_message": {
+      "code": "INVALID_FIELD_LENGTH",
+      "message": "bad request"
+    },
+    "response_code": 400
+  }
+}
+

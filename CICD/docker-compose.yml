@@ -1,0 +1,58 @@
+version: '3.5'
+
+services:
+  mavenfull:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: car-book-api-test
+    command: mvn clean test -Dtest=CarBookApiFullTestRunner
+    working_dir: ${APP_PATH:-/car-book-api-test}
+    volumes:
+      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - mvn_home:${APP_PATH:-/root/.m2home}
+    environment:
+      TZ: Asia/Singapore
+      MAVEN_HOME: ${APP_PATH:-/root/.m2home}
+    networks:
+      - backend
+
+  mavensmoke:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: car-book-api-test
+    command: mvn clean test -Dtest=CarBookApiSmokeRunner
+    working_dir: ${APP_PATH:-/car-book-api-test}
+    volumes:
+      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - mvn_home:${APP_PATH:-/root/.m2home}
+    environment:
+      TZ: Asia/Singapore
+      MAVEN_HOME: ${APP_PATH:-/root/.m2home}
+    networks:
+      - backend
+
+  performancerun:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: car-book-api-test
+    command: mvn test test-compile gatling:test
+    working_dir: ${APP_PATH:-/car-book-api-test}
+    volumes:
+      - ${APP_PATH:-./..}:${APP_PATH:-/car-book-api-test}
+      - mvn_home:${APP_PATH:-/root/.m2home}
+    environment:
+      TZ: Asia/Singapore
+      MAVEN_HOME: ${APP_PATH:-/root/.m2home}
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: ${APP_NAME:-car-book-api-test}-${CONTAINER_SUFFIX:-local}
+
+volumes:
+  mvn_home:
+    name: ${APP_NAME:-car-book-api-test}-maven
